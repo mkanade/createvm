@@ -6,6 +6,7 @@
         vcenter_username: administrator@vcanter.local
         vcenter_password: Default!23
         vcenter_hostname: vc.mk.io
+        vcenter_validate_certs: no
       register: r
 
     - set_fact:
