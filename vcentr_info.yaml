@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Get My vCenter
+      vmware.vmware_rest.vcenter_datacenter_info:
+        vcenter_username: "{{ VMWARE_USER }}"
+        vcenter_password: "{{ VMWARE_PASSWORD }}"
+        vcenter_hostname: "{{ VMWARE_HOST }} "
+      register: r
+
+    - set_fact:
+        datacenter_id: "{{ (r.value | selectattr('name', 'equalto', 'Asia-Datacenter1') | map(attribute='datacenter'))[0] }}"
+
+    - debug:
+        msg: "{{ datacenter_id }}"
