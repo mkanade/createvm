@@ -3,7 +3,7 @@
   become: false
   gather_facts: false
 
-  task:
+  tasks:
     - name: Create a virtual machine from a template
       community.vmware.vmware_guest:
         hostname: "{{ vcenter_hostname }}"
@@ -44,5 +44,4 @@
         - name: VM Network
           mac: aa:bb:dd:aa:00:14
         wait_for_ip_address: true
-      delegate_to: localhost
-      register: deploy
+      
