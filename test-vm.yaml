@@ -4,46 +4,46 @@
   become: false
   gather_facts: false
 
-task:
-  - name: Create a virtual machine from a template
-    community.vmware.vmware_guest:
-      hostname: "{{ vcenter_hostname }}"
-      username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}"
-      folder: /test
-      name: testvm_2
-      state: poweredon
-      disk:
-      - size_gb: 10
-        type: thin
-        datastore: Datastore
-      hardware:
-        memory_mb: 512
-        num_cpus: 6
-        num_cpu_cores_per_socket: 3
-        scsi: paravirtual
-        memory_reservation_lock: true
-        mem_limit: 8096
-        mem_reservation: 4096
-        cpu_shares_level: "high"
-        mem_shares_level: "high"
-        cpu_limit: 8096
-        cpu_reservation: 4096
-        max_connections: 5
-        hotadd_cpu: true
-        hotremove_cpu: true
-        hotadd_memory: false
-        version: 12 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      cdrom:
-          - controller_number: 0
-            unit_number: 0
-            state: present
-            type: iso
-            iso_path: "[Datastore] rhel-8.6-x86_64-dvd.iso"
-      networks:
-      - name: VM Network
-        mac: aa:bb:dd:aa:00:14
-      wait_for_ip_address: true
-    delegate_to: localhost
-    register: deploy
+  task:
+    - name: Create a virtual machine from a template
+      community.vmware.vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        folder: /test
+        name: testvm_2
+        state: poweredon
+        disk:
+        - size_gb: 10
+          type: thin
+          datastore: Datastore
+        hardware:
+          memory_mb: 512
+          num_cpus: 6
+          num_cpu_cores_per_socket: 3
+          scsi: paravirtual
+          memory_reservation_lock: true
+          mem_limit: 8096
+          mem_reservation: 4096
+          cpu_shares_level: "high"
+          mem_shares_level: "high"
+          cpu_limit: 8096
+          cpu_reservation: 4096
+          max_connections: 5
+          hotadd_cpu: true
+          hotremove_cpu: true
+          hotadd_memory: false
+          version: 12 # Hardware version of virtual machine
+          boot_firmware: "efi"
+        cdrom:
+            - controller_number: 0
+              unit_number: 0
+              state: present
+              type: iso
+              iso_path: "[Datastore] rhel-8.6-x86_64-dvd.iso"
+        networks:
+        - name: VM Network
+          mac: aa:bb:dd:aa:00:14
+        wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy
