@@ -3,9 +3,9 @@
   tasks:
     - name: Get My vCenter
       vmware.vmware_rest.vcenter_datacenter_info:
-        vcenter_username: "{{ VMWARE_USER }}"
-        vcenter_password: "{{ VMWARE_PASSWORD }}"
-        vcenter_hostname: "{{ VMWARE_HOST }} "
+        vcenter_username: administrator@vcanter.local
+        vcenter_password: Default!23
+        vcenter_hostname: vc.mk.io
       register: r
 
     - set_fact:
