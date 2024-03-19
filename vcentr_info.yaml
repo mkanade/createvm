@@ -39,25 +39,23 @@
     - name: Set my_virtual_machine_folder
       set_fact:
         my_virtual_machine_folder: '{{ my_folders.value|first }}'
-        
-      
+
     - name: Create a VM
       vmware.vmware_rest.vcenter_vm:
         placement:
-          cluster: "{{ lookup('vmware.vmware_rest.cluster_moid', '/DC1/cluster1') }}"
-          datastore: "/DC1/Datastore"
-          folder: "{{ lookup('vmware.vmware_rest.folder_moid', '/DC1/test') }}"
-          
+          cluster: "{{ my_cluster_info.id }}"
+          datastore: "{{ my_datastore.datastore }}"
+          folder: "{{ my_virtual_machine_folder.folder }}"
+          resource_pool: "{{ my_cluster_info.value.resource_pool }}"
         name: test_vm1
         guest_OS: RHEL_8_64
         hardware_version: VMX_11
         memory:
           hot_add_enabled: true
           size_MiB: 1024
-        cdroms:
-        - controller_number: 0
-          unit_number: 0
-          state: present
-          type: iso
-          iso_path: "[Datastore] rhel-8.6-x86_64-dvd.iso"  
-      register: _result
+      register: _result 
+
+
+        
+      
+   
