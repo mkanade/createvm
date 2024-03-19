@@ -14,7 +14,7 @@
         placement:
           cluster: "vc.mk.io"
           datastore: "/DC1/Datastore"
-          #folder: "/DC1/test/"
+          folder: "/test/"
           
         name: test_vm1
         guest_OS: RHEL_8_64
