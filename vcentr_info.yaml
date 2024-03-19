@@ -12,9 +12,9 @@
     - name: Create a VM
       vmware.vmware_rest.vcenter_vm:
         placement:
-          cluster: "vc.mk.io"
+          cluster: "/vc.mk.io/DC1/cluster1"
           datastore: "/DC1/Datastore"
-          folder: "/test/"
+          folder: "{{ lookup('vmware.vmware_rest.folder_moid', '/DC1/test') }}"
           
         name: test_vm1
         guest_OS: RHEL_8_64
