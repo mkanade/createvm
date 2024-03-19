@@ -17,7 +17,7 @@
           folder: "/DC1/test"
           
         name: test_vm1
-        guest_OS: RHEL_8_6
+        guest_OS: RHEL_8_64
         hardware_version: VMX_11
         memory:
           hot_add_enabled: true
