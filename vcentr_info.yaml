@@ -13,13 +13,19 @@
       vmware.vmware_rest.vcenter_vm:
         placement:
           cluster: "vc.mk.io"
-          datastore: "Datastore"
-          folder: "test"
+          datastore: "/DC1/Datastore"
+          folder: "/DC1/test"
           
         name: test_vm1
-        guest_OS: DEBIAN_8_64
+        guest_OS: RHEL_8_6
         hardware_version: VMX_11
         memory:
           hot_add_enabled: true
           size_MiB: 1024
+        cdrom:
+        - controller_number: 0
+          unit_number: 0
+          state: present
+          type: iso
+          iso_path: "[Datastore] rhel-8.6-x86_64-dvd.iso"  
       register: _result
