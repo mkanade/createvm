@@ -22,7 +22,7 @@
         memory:
           hot_add_enabled: true
           size_MiB: 1024
-        cdrom:
+        cdroms:
         - controller_number: 0
           unit_number: 0
           state: present
