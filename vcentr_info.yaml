@@ -1,14 +1,7 @@
 ---
 - hosts: localhost
   tasks:
-    - name: Get My vCenter
-      vmware.vmware_rest.vcenter_datacenter_info:
-        vcenter_username: administrator@vsphere.local
-        vcenter_password: Default!23
-        vcenter_hostname: vc.mk.io
-        vcenter_validate_certs: no
-      register: r
-
+    
     - name: collect a list of the datacenters
       vmware.vmware_rest.vcenter_datacenter_info:
       register: my_datacenters
