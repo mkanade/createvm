@@ -4,6 +4,7 @@
     
     - name: collect a list of the filesystem
       vmware.vmware_rest.content_library_item_info:
+      library_id: 'test'
       register: lib_items
 
     - name: debug info
