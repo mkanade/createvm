@@ -3,11 +3,10 @@
   tasks:
     
     - name: collect a list of the filesystem
-      vmware.vmware_rest.content_library_item_info:
-        library_id: 'test.id'
-      register: lib_items
+      vmware.vmware_rest.content_locallibrary:
+      register: nfs_lib
 
     - name: debug info
       debug: 
-        var: lib_items
+        var: nfs_lib
         
