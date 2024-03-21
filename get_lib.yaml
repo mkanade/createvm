@@ -1,7 +1,14 @@
 ---
 - hosts: localhost
   tasks:
-    
+    - name: Retrieve a list of all the datastores
+      vmware.vmware_rest.vcenter_datastore_info:
+        filter_names:
+        - Datastore
+      register: my_datastores
+    - name: Set my_datastore
+      set_fact:
+         my_datastore: '{{ my_datastores.value|first }}'  
     - name: Create a content library based on a DataStore
       vmware.vmware_rest.content_locallibrary:
         name: my_library_on_datastore
@@ -10,7 +17,7 @@
           published: true
           authentication_method: NONE
         storage_backings:
-        - datastore_id: "{{ lookup('vmware.vmware_rest.datastore_moid', '/DC1/Datastore') }}"
+        - datastore_id: "{{ my_datastore }}"
           type: DATASTORE
         state: present
       register: nfs_lib
