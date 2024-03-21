@@ -22,7 +22,10 @@
         state: present
       register: nfs_lib
 
+    - name: List all Local Content Library
+      vmware.vmware_rest.content_locallibrary_info:
+      register: all_content_libraries
     - name: debug info
       debug: 
-        var: nfs_lib
+        var: all_content_libraries
         
