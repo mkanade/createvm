@@ -1,1 +1,12 @@
+---
+- hosts: localhost
+  tasks:
+    
+    - name: collect a list of the filesystem
+      vmware.vmware_rest.content_library_item_info:
+      register: lib_items
 
+    - name: debug info
+      debug: 
+        var: lib_items
+        
