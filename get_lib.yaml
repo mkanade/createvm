@@ -2,8 +2,17 @@
 - hosts: localhost
   tasks:
     
-    - name: collect a list of the filesystem
+    - name: Create a content library based on a DataStore
       vmware.vmware_rest.content_locallibrary:
+        name: my_library_on_datastore
+        description: automated
+        publish_info:
+          published: true
+          authentication_method: NONE
+        storage_backings:
+        - datastore_id: "{{ lookup('vmware.vmware_rest.datastore_moid', '/DC1/Datastore') }}"
+          type: DATASTORE
+        state: present
       register: nfs_lib
 
     - name: debug info
