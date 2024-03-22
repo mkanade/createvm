@@ -7,11 +7,13 @@
     - name: debug info
       debug: 
         var: nfs_lib
-    - name: Get the list of items of the NFS library
-      vmware.vmware_rest.content_library_item_info:
-        library_id: '{{ nfs_lib.id  }}'
-      register: lib_items    
+    - name: Retrieve the local content library information based upon id check mode
+      vmware.vmware_rest.content_locallibrary_info:
+        library_id: '{{ nfs_lib.id }}'
+      register: result
+      check_mode: true    
+    
     - name: debug info
       debug: 
-        var: lib_items   
+        var: result 
         
