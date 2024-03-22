@@ -1,8 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-
-
     - name: List all Local Content Library
       vmware.vmware_rest.content_locallibrary_info:
       register: nfs_lib
