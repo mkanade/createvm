@@ -7,12 +7,10 @@
     - name: debug info
       debug: 
         var: nfs_lib
-    - name: Retrieve the local content library information based upon id check mode
-      vmware.vmware_rest.content_locallibrary_info:
-        library_id: '{{ nfs_lib.id }}'
-      register: result
-      check_mode: true    
-    
+    - name: Use the name to identify the item
+      set_fact:
+        result: "{{ nfs_lib.id | selectattr('id')|first }}" 
+        
     - name: debug info
       debug: 
         var: result 
