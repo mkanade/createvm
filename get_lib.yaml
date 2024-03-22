@@ -3,15 +3,15 @@
   tasks:
     - name: List all Local Content Library
       vmware.vmware_rest.content_locallibrary_info:
-      register: nfs_lib
+      register: all_content_libraries
     - name: debug info
       debug: 
-        var: nfs_lib
-    - name: Use the name to identify the item
+        var: all_content_libraries
+    - name: Use the name to identify the right Content Library
       set_fact:
-        result: "{{ nfs_lib.id | selectattr('id')|first }}" 
+        nfs_lib: "{{ all_content_libraries.value | selectattr('name', 'equalto', 'my_library_on_nfs')|first }}"
         
     - name: debug info
       debug: 
-        var: result 
+        var: nfs_lib
         
