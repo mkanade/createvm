@@ -9,7 +9,7 @@
         var: all_content_libraries
     - name: Use the name to identify the right Content Library
       set_fact:
-        nfs_lib: "{{ all_content_libraries.value | selectattr('name', 'equalto', 'my_library_on_nfs')|first }}"
+        nfs_lib: "{{ all_content_libraries.value | selectattr('name', 'equalto', 'test')|first }}"
         
     - name: debug info
       debug: 
