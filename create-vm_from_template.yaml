@@ -47,5 +47,26 @@
     - name: debug test_vm1_info
       debug:
         var: test_vm1_info
-
-      
+        
+    - name: List all Local Content Library
+      vmware.vmware_rest.content_locallibrary_info:
+      register: all_content_libraries
+    
+    - name: Use the name to identify the right Content Library
+      set_fact:
+        nfs_lib: "{{ all_content_libraries.value | selectattr('name', 'equalto', 'test')|first }}"
+    
+    - name: Export the VM as an OVF on the library
+      vmware.vmware_rest.vcenter_ovf_libraryitem:
+        session_timeout: 2900
+        source:
+          type: VirtualMachine
+          id: "{{ test_vm1_info.id }}"
+        target:
+          library_id: "{{ nfs_lib.id }}"
+        create_spec:
+          name: golden_image
+          description: an OVF example
+          flags: []
+        state: present
+          
