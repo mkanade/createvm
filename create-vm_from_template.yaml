@@ -88,7 +88,7 @@
         var: my_cluster_info  
     - name: Set resource pool
       set_fact:
-        my_resource_pool_id: '{{ resource_pool_id.value.resource_pool}}'
+        my_resource_pool_id: '{{ my_cluster_info.value.resource_pool}}'
     - name: debug my_resource pool
       debug:
         var: my_resource_pool_id    
