@@ -73,7 +73,7 @@
     - name: Get the list of items of the NFS library
       vmware.vmware_rest.content_library_item_info:
         library_id: '{{ nfs_lib.id }}'
-        register: lib_items
+      register: lib_items
     - name: Define a new fact with the golden image ID
       ansible.builtin.set_fact:
         golden_image_id: '{{ (lib_items.value|selectattr("name", "equalto", "golden_image")|first).id }}'      
