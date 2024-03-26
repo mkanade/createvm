@@ -92,7 +92,7 @@
         state: deploy
         target: 
           folder_id: "{{ my_virtual_machine_folder.folder }}"
-          resource_pool_id: "{{ resgroup-9 }}"
+          resource_pool_id: "resgroup-9"
         deployment_spec:
           name: my_vm_from_ovf
           accept_all_EULA: true
