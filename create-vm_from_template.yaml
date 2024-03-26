@@ -85,7 +85,7 @@
         ovf_library_item_id: '{{ golden_image_id }}'
         state: deploy
         target: 
-          resource_pool_id: "{{ lookup('vmware.vmware_rest.resource_pool_moid', '/my_dc/host/my_cluster/Resources') }}"
+          folder_id: "{{ my_virtual_machine_folder }}"
         deployment_spec:
           name: my_vm_from_ovf
           accept_all_EULA: true
