@@ -86,6 +86,13 @@
     - name: debug my_cluster_info
       debug:
         var: my_cluster_info  
+    - name: Set resource pool
+      set_fact:
+        my_resource_pool_id: '{{ resource_pool_id.value|second }}'
+    - name: debug my_resource pool
+      debug:
+        var: my_resource_pool_id    
+    
     - name: Create a new VM based on the OVF
       vmware.vmware_rest.vcenter_ovf_libraryitem:
         ovf_library_item_id: '{{ golden_image_id }}'
