@@ -99,7 +99,7 @@
         state: deploy
         target: 
           folder_id: "{{ my_virtual_machine_folder.folder }}"
-          resource_pool_id: ""{{ my_resource_pool_id.resource_pool }}""
+          resource_pool_id: "{{ my_resource_pool_id.resource_pool }}"
         deployment_spec:
           name: my_vm_from_ovf
           accept_all_EULA: true
