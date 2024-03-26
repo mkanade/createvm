@@ -83,6 +83,9 @@
     - name: debug my_folders
       debug:
         var: my_folders
+    - name: debug my_cluster_info
+      debug:
+        var: my_cluster_info  
     - name: Create a new VM based on the OVF
       vmware.vmware_rest.vcenter_ovf_libraryitem:
         ovf_library_item_id: '{{ golden_image_id }}'
