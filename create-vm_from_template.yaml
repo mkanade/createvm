@@ -80,9 +80,9 @@
     - name: debug golden_image_id
       debug:
         var: golden_image_id
-    - name: debug my_virtual_machine_folder
+    - name: debug my_folders
       debug:
-        var: my_virtual_machine_folder
+        var: my_folders
     - name: Create a new VM based on the OVF
       vmware.vmware_rest.vcenter_ovf_libraryitem:
         ovf_library_item_id: '{{ golden_image_id }}'
