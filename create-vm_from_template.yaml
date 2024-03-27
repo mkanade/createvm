@@ -10,7 +10,13 @@
       register: all_the_clusters
     - name: debug all_the_clusters
       debug:
-        var: all_the_clusters    
+        var: all_the_clusters 
+    - name: Set cluster_from_name
+      set_fact:
+        cluster_from_name: '{{ all_the_clusters.value | selectattr('name', 'equalto', 'cluster1')|first }}'  
+    - name: debug cluster_from_name
+      debug:
+        var: cluster_from_name     
     - name: Retrieve details about the first cluster
       vmware.vmware_rest.vcenter_cluster_info:
         cluster: "{{ all_the_clusters.value[0].cluster }}"
