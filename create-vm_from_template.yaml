@@ -13,7 +13,7 @@
     - name: debug all_the_clusters
       debug:
         var: all_the_clusters 
-     - name: debug vars cluster
+    - name: debug vars cluster
       debug:
         var: my_cluster_name     
     - name: Set cluster_from_name
