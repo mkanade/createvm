@@ -13,6 +13,9 @@
     - name: debug all_the_clusters
       debug:
         var: all_the_clusters 
+     - name: debug vars cluster
+      debug:
+        var: my_cluster_name     
     - name: Set cluster_from_name
       set_fact:
         cluster_from_name: "{{ all_the_clusters.value | selectattr('name', 'equalto', ' my_cluster_name ' )|first }}"  
