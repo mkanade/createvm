@@ -24,7 +24,7 @@
         var: cluster_from_name     
     - name: Retrieve details about the first cluster
       vmware.vmware_rest.vcenter_cluster_info:
-        cluster: "{{ all_the_clusters.value[0].cluster }}"
+        cluster: "{{ all_the_clusters.value.name[cluster1].cluster }}"
       register: my_cluster_info
     - name: Retrieve a list of all the datastores
       vmware.vmware_rest.vcenter_datastore_info:
